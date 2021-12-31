@@ -1,0 +1,36 @@
+#Task 2 Unit 2 - Getting started 
+
+How would we create an app called Forms? 
+python3 manage.py startapp Forms
+
+
+How would we run our project to a local network?
+python3 manage.py runserver 0.0.0.0:8000
+
+
+#Task 5 Unit 5 - CTF 
+ssh django-admin@10.10.216.253
+nano messagebox/settings.py
+
+add more IP
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', '10.10.216.253']
+
+
+python3 manage.py createsuperuser
+
+10.10.216.253:8000/admin
+
+
+THM{DjanGO_Adm1n}
+
+django-admin@py:/home$ cat StrangeFox/user.txt 
+THM{SSH_gUy_101}
+
+
+cd messagebox/
+django-admin@py:~/messagebox/messagebox$ grep -i flag *.*
+home.html:      <!-- Flag 3: THM{django_w1zzard} -->
+
+
+
+https://tryhackme.com/room/django
